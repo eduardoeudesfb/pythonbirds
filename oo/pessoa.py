@@ -22,9 +22,12 @@ class Homem(Pessoa):  # Criado a Classe Homem herdando da Classe Pessoa
     pass
 
 
+class Mutante(Pessoa):
+    olhos = 3  # Sobrescrita de atributos de classe
+
 if __name__ == '__main__':
     # renzo = Pessoa(nome='Renzo')  # Alterar Pessoa por Homem, nova Classe
-    renzo = Homem(nome='Renzo')
+    renzo = Mutante(nome='Renzo')
     # luciano = Pessoa(renzo, nome='Luciano')  # Também para Homem, nova Classe
     luciano = Pessoa(renzo, nome='Luciano')
     print(Pessoa.cumprimentar(luciano))
@@ -40,7 +43,7 @@ if __name__ == '__main__':
     del luciano.olhos
     print(renzo.__dict__)
     print(luciano.__dict__)
-    Pessoa.olhos =3
+    #  Pessoa.olhos # 3 apagado
     print(Pessoa.olhos)
     print(luciano.olhos)
     print(renzo.olhos)
@@ -52,3 +55,4 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(renzo, Pessoa))
     print(isinstance(renzo, Homem))
+    print(renzo.olhos)
