@@ -7,7 +7,7 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Olá {id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
     @staticmethod
     def metodo_estatico():
@@ -18,18 +18,18 @@ class Pessoa:
         return f'{cls} - olhos {cls.olhos}'
 
 
-class Homem(Pessoa):  # Criado a Classe Homem herdando da Classe Pessoa
-    pass
+class Homem(Pessoa):
+    def cumprimentar(self):
+        cumprimentar_da_classe = super().cumprimentar()
+        return f'{cumprimentar_da_classe}.Aperto de mão'
 
 
 class Mutante(Pessoa):
-    olhos = 3  # Sobrescrita de atributos de classe
+    olhos = 3
 
 if __name__ == '__main__':
-    # renzo = Pessoa(nome='Renzo')  # Alterar Pessoa por Homem, nova Classe
     renzo = Mutante(nome='Renzo')
-    # luciano = Pessoa(renzo, nome='Luciano')  # Também para Homem, nova Classe
-    luciano = Pessoa(renzo, nome='Luciano')
+    luciano = Homem(renzo, nome='Luciano')
     print(Pessoa.cumprimentar(luciano))
     print(id(luciano))
     print(luciano.cumprimentar())
@@ -56,3 +56,5 @@ if __name__ == '__main__':
     print(isinstance(renzo, Pessoa))
     print(isinstance(renzo, Homem))
     print(renzo.olhos)
+    print(luciano.cumprimentar())
+    print(renzo.cumprimentar())
